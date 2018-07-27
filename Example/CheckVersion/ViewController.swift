@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import CheckVersion
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        CheckVersion.check{ result in
+            switch result{
+            case .versionOk:
+                print("Version is Ok")
+                break
+            default:
+                print("Other")
+                break
+            }
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 

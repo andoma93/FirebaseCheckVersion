@@ -1,8 +1,9 @@
 {
   "name": "CheckVersion",
   "version": "0.1.0",
-  "summary": "A short description of CheckVersion.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Notify users about updates",
+  "swift_version": "4.1.2",
+  "description": "A simple Library that notifies users when a new version of your app is available through Firebase Remote Configuration",
   "homepage": "https://github.com/andoma93/CheckVersion",
   "license": {
     "type": "MIT",
@@ -16,7 +17,13 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "CheckVersion/Classes/**/*"
+  "source_files": "CheckVersion/Classes/**/*",
+  "dependencies": {
+    "Firebase/RemoteConfig": [
+
+    ]
+  },
+  "static_framework": true
 }
