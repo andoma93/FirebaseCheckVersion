@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CheckVersion_Example' do
+  pod 'CheckVersion', :path => '../'
+
+  target 'CheckVersion_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
