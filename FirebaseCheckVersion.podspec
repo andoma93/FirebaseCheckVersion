@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'CheckVersion'
-  s.version          = '0.1.0'
+  s.name             = 'FirebaseCheckVersion'
+  s.version          = '1.0.0'
   s.summary          = 'Notify users about updates'
   s.swift_version    = '4.1.2'
 
