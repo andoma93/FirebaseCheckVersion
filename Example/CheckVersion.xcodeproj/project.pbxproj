@@ -29,8 +29,8 @@
 
 /* Begin PBXFileReference section */
 		3628B6DA013222EEE9B7013F /* Pods_CheckVersion_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CheckVersion_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		36F3428E95C84842B4671191 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		48028D2BC38F1F2D81C13A9F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		36F3428E95C84842B4671191 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		48028D2BC38F1F2D81C13A9F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		489D3C45098628648902D274 /* Pods-CheckVersion_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Tests/Pods-CheckVersion_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4E294E5C77E6EADD52C17BA5 /* Pods_CheckVersion_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CheckVersion_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* CheckVersion_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckVersion_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +46,7 @@
 		73A4955A18569EA5C463B09B /* Pods-CheckVersion_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Example/Pods-CheckVersion_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		97389E822019728B6A806F0D /* Pods-CheckVersion_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Example/Pods-CheckVersion_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B2E44378B079314F9E8064B2 /* Pods-CheckVersion_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Tests/Pods-CheckVersion_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7055CB7E66B765B79307B74 /* CheckVersion.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = CheckVersion.podspec; path = ../CheckVersion.podspec; sourceTree = "<group>"; };
+		C7055CB7E66B765B79307B74 /* CheckVersion.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CheckVersion.podspec; path = ../CheckVersion.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

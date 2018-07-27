@@ -1,6 +1,5 @@
 # CheckVersion
 
-[![CI Status](https://img.shields.io/travis/andoma93/CheckVersion.svg?style=flat)](https://travis-ci.org/andoma93/CheckVersion)
 [![Version](https://img.shields.io/cocoapods/v/CheckVersion.svg?style=flat)](https://cocoapods.org/pods/CheckVersion)
 [![License](https://img.shields.io/cocoapods/l/CheckVersion.svg?style=flat)](https://cocoapods.org/pods/CheckVersion)
 [![Platform](https://img.shields.io/cocoapods/p/CheckVersion.svg?style=flat)](https://cocoapods.org/pods/CheckVersion)

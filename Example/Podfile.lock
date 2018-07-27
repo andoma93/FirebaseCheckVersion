@@ -1,0 +1,16 @@
+PODS:
+  - CheckVersion (0.1.0)
+
+DEPENDENCIES:
+  - CheckVersion (from `../`)
+
+EXTERNAL SOURCES:
+  CheckVersion:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CheckVersion: e5ecff2e824bd9482a1a30d93ae383484dff4e0f
+
+PODFILE CHECKSUM: 74c99ceb790e9139d66ef30f444ac7ef503ac0da
+
+COCOAPODS: 1.5.3
