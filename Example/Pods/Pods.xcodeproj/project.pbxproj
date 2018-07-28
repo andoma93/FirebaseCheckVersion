@@ -533,12 +533,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		271B08F1210CAF7300C48314 /* Screenshots */ = {
+		271B08F3210CB10700C48314 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
 				271B08F2210CAF9D00C48314 /* firebaseNewProject.png */,
 			);
-			name = Screenshots;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		337A5FA5FA7798CE351EC20B07789320 /* FirebaseABTesting */ = {
@@ -881,7 +881,7 @@
 		DD5D7E98033BAB7AD7099B04DBE3F7CD /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				271B08F1210CAF7300C48314 /* Screenshots */,
+				271B08F3210CB10700C48314 /* Screenshots */,
 				27FC14A8210B715500ABFBED /* FirebaseCheckVersion.podspec */,
 				37C6A8A9294CBB0B6E029C205DE8669D /* LICENSE */,
 				D572BB33EC56BD37D27AC7DD76AFBE66 /* README.md */,
