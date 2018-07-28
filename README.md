@@ -105,9 +105,7 @@ CheckVersion.checkWithAlert(viewController: self){ result in
 ```
 where `result` is a Bool with value `true` if your version is ok, `false` otherwise.
 
-Info Update             |  Force Update | Error
-:-------------------------:|:-------------------------:
-<img src="./Screenshots/Mobile/infoUpdate.png" alt="drawing" width="300px"/>  | <img src="./Screenshots/Mobile/forceUpdate.png" alt="drawing" width="300px"/> | <img src="./Screenshots/Mobile/error.png" alt="drawing" width="300px"/>
+<img src="./Screenshots/Mobile/infoUpdate.png" alt="drawing" width="250px"/><img src="./Screenshots/Mobile/forceUpdate.png" alt="drawing" width="250px"/><img src="./Screenshots/Mobile/error.png" alt="drawing" width="250px"/>
 
 ### Application Configuration
 
