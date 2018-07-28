@@ -12,7 +12,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-CheckVersion is available through [CocoaPods](https://cocoapods.org). To install
+FirebaseCheckVersion is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
@@ -37,6 +37,8 @@ Now fill the bundle id with yours, download the GoogleService-Info.plist that Fi
 Go now in your AppDelegate.swift file and write ```FirebaseApp.configure()```  how first line of your ```didFinishLaunchingWithOptions:```  method in this way:
 
 ```swift
+import Firebase
+...
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
     // Override point for customization after application launch.
@@ -144,8 +146,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ## Author
 
-andoma93, andoma93@gmail.com
+Mario Monaco, andoma93@gmail.com
 
 ## License
 
-CheckVersion is available under the MIT license. See the LICENSE file for more info.
+FirebaseCheckVersion is available under the MIT license. See the LICENSE file for more info.
