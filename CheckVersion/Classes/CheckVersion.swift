@@ -21,7 +21,7 @@ public class CheckVersion{
             switch status{
             case .success:
                 remoteConfig.activateFetched()
-                let check = remoteConfig.configValue(forKey: "\(CheckVersionConfiguration.default.appendKey)\(version)").stringValue
+                let check = remoteConfig.configValue(forKey: "\(CheckVersionConfiguration.default.prependKey)\(version)").stringValue
                 if let check = check?.lowercased(){
                     if check == keyForceUpdate{
                         completion(.forceUpdate)

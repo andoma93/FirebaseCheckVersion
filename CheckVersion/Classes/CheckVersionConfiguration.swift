@@ -18,19 +18,19 @@ public class CheckVersionConfiguration{
             return pDefault!
         }
     }
-    var continueOnVersionUnknown : Bool = false
-    var continueOnError : Bool = true
+    public var continueOnVersionUnknown : Bool = true
+    public var continueOnError : Bool = true
     
-    var labelInfoUpdate : String = "A new update is avaiable."
-    var labelForceUpdate : String = "A new update is avaiable. Please update to continue using this application."
-    var labelButtonUpdate : String = "Update"
-    var labelButtonNotNow : String = "Not now"
-    var labelButtonOk : String = "Ok"
-    var labelAlertTitle : String = "Warning"
-    var labelAlertError : String = "An error occurred, please try again later."
+    public var labelInfoUpdate : String = "A new update is avaiable."
+    public var labelForceUpdate : String = "A new update is avaiable. Please update to continue using this application."
+    public var labelButtonUpdate : String = "Update"
+    public var labelButtonNotNow : String = "Not now"
+    public var labelButtonOk : String = "Ok"
+    public var labelAlertTitle : String = "Warning"
+    public var labelAlertError : String = "An error occurred, please try again later."
     
-    var urlStore : URL = URL(string: "itms://")!
-    var duration : TimeInterval = TimeInterval(60)
-    var appendKey : String = "iOSVersion_"
+    public var urlStore : URL = URL(string: "itms-apps://itunes.apple.com")!
+    public var duration : TimeInterval = TimeInterval(60)
+    public var prependKey : String = "iOSVersion_"
     
 }

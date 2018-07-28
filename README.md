@@ -81,7 +81,7 @@ CheckVersion.check{ result in
 }
 ```
 
-where result is a enum with these possible values:
+where `result` is a enum with these possible values:
 
 1. `versionOk` which means your version is currently ok
 2. `infoUpdate` which means the version is not the last avaiable, but can be used for your application
@@ -90,6 +90,57 @@ where result is a enum with these possible values:
 5. `error` which means an error occurred
 
 #### Alert Check
+
+In the UIViewController you want to add the check with Alert you need to insert these code lines:
+
+```swift
+import CheckVersion
+...
+
+CheckVersion.checkWithAlert(viewController: self){ result in
+    //check result and do what you want
+}
+```
+where `result` is a Bool with value `true` if your version is ok, `false` otherwise.
+
+### Application Configuration
+
+Is possible to choose some custom library configuration like these:
+```swift
+import CheckVersion
+...
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    FirebaseApp.configure()
+    CheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com/<myAppId>")! //where myAppID is your store application id
+    CheckVersionConfiguration.default.continueOnError = false //continue in case of error (default is true)
+    CheckVersionConfiguration.default.continueOnVersionUnknown = false //continue in case of version unknown (default is true)
+    CheckVersionConfiguration.default.prependKey = "" //the prepend string you can insert in firebase console before (default is 'iOSVersion_')
+    CheckVersionConfiguration.default.duration = TimeInterval(120) //the duration of Firebase Remote Configuration Cache (default is 60 seconds)
+    // Override point for customization after application launch.
+    return true
+}
+```
+
+Right now the library is localized just in English, so if you want to use built-in alerts is possible to change these configurations property too:
+
+```swift
+import CheckVersion
+...
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    FirebaseApp.configure()
+    CheckVersionConfiguration.default.labelAlertError = "Si è verificato un errore generico, per favore riprova più tardi"
+    CheckVersionConfiguration.default.labelButtonNotNow = "Non adesso"
+    CheckVersionConfiguration.default.labelButtonUpdate = "Aggiorna"
+    CheckVersionConfiguration.default.labelForceUpdate = "E' disponibile una nuova versione dell'app: per favore aggiornala adesso"
+    CheckVersionConfiguration.default.labelInfoUpdate = "E' disponibile una nuova versione dell'app: se vuoi aggiornala adesso"
+    CheckVersionConfiguration.default.labelAlertTitle = "Attenzione"
+    CheckVersionConfiguration.default.labelButtonOk = "Ok"
+    // Override point for customization after application launch.
+    return true
+}
+```
 
 ## Author
 
