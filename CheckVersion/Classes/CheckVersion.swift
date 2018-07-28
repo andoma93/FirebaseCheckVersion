@@ -10,12 +10,6 @@ import FirebaseRemoteConfig
 
 public class CheckVersion{
     
-    static private var currentConfiguration : CheckVersionConfiguration = CheckVersionConfiguration.default
-    
-    public class func initialize(configuration: CheckVersionConfiguration = CheckVersionConfiguration.default){
-        CheckVersion.currentConfiguration = configuration
-    }
-    
     public class func check(_ completion: @escaping (CVResult) -> ()){
         let version = CVUtility.getAppVersionForFirebaseRemote()
         let remoteConfig = RemoteConfig.remoteConfig()

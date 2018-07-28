@@ -1,8 +1,8 @@
-# CheckVersion
+# FirebaseCheckVersion
 
-[![Version](https://img.shields.io/cocoapods/v/CheckVersion.svg?style=flat)](https://cocoapods.org/pods/CheckVersion)
-[![License](https://img.shields.io/cocoapods/l/CheckVersion.svg?style=flat)](https://cocoapods.org/pods/CheckVersion)
-[![Platform](https://img.shields.io/cocoapods/p/CheckVersion.svg?style=flat)](https://cocoapods.org/pods/CheckVersion)
+[![Version](https://img.shields.io/cocoapods/v/FirebaseCheckVersion.svg?style=flat)](https://cocoapods.org/pods/FirebaseCheckVersion)
+[![License](https://img.shields.io/cocoapods/l/FirebaseCheckVersion.svg?style=flat)](https://cocoapods.org/pods/FirebaseCheckVersion)
+[![Platform](https://img.shields.io/cocoapods/p/FirebaseCheckVersion.svg?style=flat)](https://cocoapods.org/pods/FirebaseCheckVersion)
 
 ## Example
 

@@ -7,11 +7,15 @@
 
 import Foundation
 
-public class CheckVersionConfiguration{
+private class CheckVersionConfiguration{
     
+    private static var pDefault : CheckVersionConfiguration?
     public static var `default` : CheckVersionConfiguration{
         get{
-            return CheckVersionConfiguration(labelInfoUpdate: "Please Update", labelForceUpdate: "Force Update", duration: TimeInterval(120))
+            if pDefault == nil{
+                pDefault = CheckVersionConfiguration()
+            }
+            return pDefault!
         }
     }
     
@@ -19,10 +23,10 @@ public class CheckVersionConfiguration{
     var labelForceUpdate : String
     var duration : TimeInterval
     
-    init(labelInfoUpdate: String, labelForceUpdate: String, duration: TimeInterval) {
-        self.labelInfoUpdate = labelInfoUpdate
-        self.labelForceUpdate = labelForceUpdate
-        self.duration = duration
+    init() {
+        self.labelInfoUpdate = "InfoNewUpdateAvaiable"
+        self.labelForceUpdate = "ForceNewUpdateAvaiable"
+        self.duration = TimeInterval(60)
     }
     
 }
