@@ -38,11 +38,58 @@ Go now in your AppDelegate.swift file and write ```FirebaseApp.configure()```  h
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-FirebaseApp.configure()
-// Override point for customization after application launch.
-return true
+    FirebaseApp.configure()
+    // Override point for customization after application launch.
+    return true
 }
 ```
+Done!
+
+## Usage
+
+### Add versions to your Firebase
+
+Once you configured all, you need to set the version on your Firebase Project, so navigate to "Remote Config" section into Firebase and add a new property which key is  ```iOSVersion_<yourVersionWithUnderscore>``` where <yourVersionWithUnderscore> is your version number with underscore instead of points:
+Eg.
+```
+1.0 --> 1_0
+1.1 --> 1_1
+10.03.9 --> 10_03_9
+```
+
+So if your app version is 1.0 simple configure a new Remote Configuration like this:
+
+![alt text](./Screenshots/newRemoteConfiguration.png)
+
+The possible values you can give to your version are:
+1. `versionOk` which means the version is up to date
+2. `infoUpdate` which means the version is not the last avaiable, but can be used for your application
+3. `forceUpdate` which means the version is not the last avaiable and can NOT be used for your application
+
+### Add check to your application
+
+#### Silent Check
+
+In the UIViewController you want to add the check silently you need to insert these code lines:
+
+```swift
+import CheckVersion
+...
+
+CheckVersion.check{ result in
+    //check result and do what you want
+}
+```
+
+where result is a enum with these possible values:
+
+1. `versionOk` which means your version is currently ok
+2. `infoUpdate` which means the version is not the last avaiable, but can be used for your application
+3. `forceUpdate` which means the version is not the last avaiable and can NOT be used for your application
+4. `versionUnknown` which means your version is not configured on Firebase Console
+5. `error` which means an error occurred
+
+#### Alert Check
 
 ## Author
 

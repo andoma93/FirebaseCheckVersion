@@ -13,10 +13,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CheckVersion.checkWithAlert(viewController: self){ result in
-            if result{
-                //Do what you want
-            }
+        CheckVersion.check{ result in
+            //check result and do what you want
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
