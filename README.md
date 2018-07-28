@@ -24,15 +24,15 @@ pod 'FirebaseCheckVersion'
 First of all you need, if you haven't yet, to create a Firebase Project for your iOS Application.
 Go to [Firebase Console](https://console.firebase.google.com) and create your project:
 
-![alt text](./Screenshots/firebaseNewProject.png)
+![alt text](https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/firebaseNewProject.png)
 
 Once you created your project you need to link your iOS Application:
 
-![alt text](./Screenshots/addIosProject.png)
+![alt text](https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/addIosProject.png)
 
 Now fill the bundle id with yours, download the GoogleService-Info.plist that Firebase created for your project and drag it into your xCode Project in this way:
 
-![alt text](./Screenshots/downloadPlist.png)
+![alt text](https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/downloadPlist.png)
 
 Go now in your AppDelegate.swift file and write ```FirebaseApp.configure()```  how first line of your ```didFinishLaunchingWithOptions:```  method in this way:
 
@@ -61,7 +61,7 @@ Eg.
 
 So if your app version is 1.0 simple configure a new Remote Configuration like this:
 
-![alt text](./Screenshots/newRemoteConfiguration.png)
+![alt text](https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/newRemoteConfiguration.png)
 
 The possible values you can give to your version are:
 1. `versionOk` which means the version is up to date
@@ -105,7 +105,7 @@ CheckVersion.checkWithAlert(viewController: self){ result in
 ```
 where `result` is a Bool with value `true` if your version is ok, `false` otherwise.
 
-<img src="./Screenshots/Mobile/infoUpdate.png" alt="drawing" width="250px"/>  <img src="./Screenshots/Mobile/forceUpdate.png" alt="drawing" width="250px"/>  <img src="./Screenshots/Mobile/error.png" alt="drawing" width="250px"/>
+<img src="https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/Mobile/infoUpdate.png" alt="drawing" width="250px"/>  <img src="https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/Mobile/forceUpdate.png" alt="drawing" width="250px"/>  <img src="https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/Mobile/error.png" alt="drawing" width="250px"/>
 
 ### Application Configuration
 
@@ -152,4 +152,4 @@ Mario Monaco, andoma93@gmail.com
 
 ## License
 
-FirebaseCheckVersion is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
+FirebaseCheckVersion is available under the MIT license. See the [LICENSE](https://github.com/andoma93/FirebaseCheckVersion/blob/master/LICENSE) file for more info.
