@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
   A simple Library that notifies users when a new version of your app is available through Firebase Remote Configuration
                        DESC
 
-  s.homepage         = 'https://github.com/andoma93/CheckVersion'
+  s.homepage         = 'https://github.com/andoma93/FirebaseCheckVersion'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'andoma93' => 'andoma93@gmail.com' }
-  s.source           = { :git => 'https://github.com/andoma93/CheckVersion.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/andoma93/FirebaseCheckVersion.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
