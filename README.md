@@ -105,28 +105,9 @@ CheckVersion.checkWithAlert(viewController: self){ result in
 ```
 where `result` is a Bool with value `true` if your version is ok, `false` otherwise.
 
-<div class="row">
-<div class="column">
-<img src="./Screenshots/Mobile/infoUpdate.png" alt="drawing" width="300px"/>
-</div>
-<div class="column">
-<img src="./Screenshots/Mobile/forceUpdate.png" alt="drawing" width="300px"/>
-</div>
-<div class="column">
-<img src="./Screenshots/Mobile/error.png" alt="drawing" width="300px"/>
-</div>
-</div>
-
-<style>
-.row {
-display: flex;
-}
-
-.column {
-flex: 33.33%;
-padding: 5px;
-}
-</style>
+Info Update             |  Force Update | Error
+:-------------------------:|:-------------------------:
+<img src="./Screenshots/Mobile/infoUpdate.png" alt="drawing" width="300px"/>  | <img src="./Screenshots/Mobile/forceUpdate.png" alt="drawing" width="300px"/> | <img src="./Screenshots/Mobile/error.png" alt="drawing" width="300px"/>
 
 ### Application Configuration
 
