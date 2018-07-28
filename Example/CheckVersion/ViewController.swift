@@ -13,14 +13,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CheckVersion.check{ result in
-            switch result{
-            case .versionOk:
-                print("Version is Ok")
-                break
-            default:
-                print("Other")
-                break
+        CheckVersion.checkWithAlert(viewController: self){ result in
+            if result{
+                //Do what you want
             }
         }
         // Do any additional setup after loading the view, typically from a nib.
