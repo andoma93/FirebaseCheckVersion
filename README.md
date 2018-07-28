@@ -152,4 +152,4 @@ Mario Monaco, andoma93@gmail.com
 
 ## License
 
-FirebaseCheckVersion is available under the MIT license. See the LICENSE file for more info.
+FirebaseCheckVersion is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
