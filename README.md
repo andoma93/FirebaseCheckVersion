@@ -117,6 +117,17 @@ where `result` is a Bool with value `true` if your version is ok, `false` otherw
 </div>
 </div>
 
+<style>
+.row {
+display: flex;
+}
+
+.column {
+flex: 33.33%;
+padding: 5px;
+}
+</style>
+
 ### Application Configuration
 
 Is possible to choose some custom library configuration like these:
