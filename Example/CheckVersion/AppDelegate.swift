@@ -21,15 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com")!
         CheckVersionConfiguration.default.continueOnError = false
         CheckVersionConfiguration.default.continueOnVersionUnknown = false
-        CheckVersionConfiguration.default.prependKey = "MyPrependKey_"
-        CheckVersionConfiguration.default.duration = TimeInterval(120)
-        CheckVersionConfiguration.default.labelAlertError = "Si è verificato un errore generico, per favore riprova più tardi"
-        CheckVersionConfiguration.default.labelButtonNotNow = "Non adesso"
-        CheckVersionConfiguration.default.labelButtonUpdate = "Aggiorna"
-        CheckVersionConfiguration.default.labelForceUpdate = "E' disponibile una nuova versione dell'app: per favore aggiornala adesso"
-        CheckVersionConfiguration.default.labelInfoUpdate = "E' disponibile una nuova versione dell'app: se vuoi aggiornala adesso"
-        CheckVersionConfiguration.default.labelAlertTitle = "Attenzione"
-        CheckVersionConfiguration.default.labelButtonOk = "Ok"
+        CheckVersionConfiguration.default.prependKey = "CheckVersion_"
+        CheckVersionConfiguration.default.duration = TimeInterval(10)
         // Override point for customization after application launch.
         return true
     }

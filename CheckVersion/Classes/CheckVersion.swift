@@ -85,8 +85,9 @@ public class CheckVersion{
         let notNow = UIAlertAction(title: CheckVersionConfiguration.default.labelButtonNotNow,style: .default, handler: { action in
             completion(true)
         })
-        let update = UIAlertAction(title: CheckVersionConfiguration.default.labelInfoUpdate,style: .default, handler: { action in
+        let update = UIAlertAction(title: CheckVersionConfiguration.default.labelButtonUpdate,style: .default, handler: { action in
             UIApplication.shared.openURL(CheckVersionConfiguration.default.urlStore)
+            completion(false)
         })
         switch result{
         case .forceUpdate:

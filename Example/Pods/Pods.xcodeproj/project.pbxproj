@@ -251,6 +251,9 @@
 		271B08F4210CB21100C48314 /* addIosProject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIosProject.png; sourceTree = "<group>"; };
 		271B08F5210CB27C00C48314 /* downloadPlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadPlist.png; sourceTree = "<group>"; };
 		271B08F6210CB62B00C48314 /* newRemoteConfiguration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newRemoteConfiguration.png; sourceTree = "<group>"; };
+		271B08FE210CC39200C48314 /* infoUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoUpdate.png; sourceTree = "<group>"; };
+		271B08FF210CC39200C48314 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		271B0900210CC39200C48314 /* forceUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forceUpdate.png; sourceTree = "<group>"; };
 		27FC14A2210B645600ABFBED /* CVUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVUtility.swift; path = CheckVersion/Classes/CVUtility.swift; sourceTree = "<group>"; };
 		27FC14A4210B652200ABFBED /* CVResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVResult.swift; path = CheckVersion/Classes/CVResult.swift; sourceTree = "<group>"; };
 		27FC14A8210B715500ABFBED /* FirebaseCheckVersion.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirebaseCheckVersion.podspec; sourceTree = "<group>"; };
@@ -539,12 +542,23 @@
 		271B08F3210CB10700C48314 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
+				271B08F7210CC28200C48314 /* Mobile */,
 				271B08F2210CAF9D00C48314 /* firebaseNewProject.png */,
 				271B08F4210CB21100C48314 /* addIosProject.png */,
 				271B08F5210CB27C00C48314 /* downloadPlist.png */,
 				271B08F6210CB62B00C48314 /* newRemoteConfiguration.png */,
 			);
 			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		271B08F7210CC28200C48314 /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				271B08FF210CC39200C48314 /* error.png */,
+				271B0900210CC39200C48314 /* forceUpdate.png */,
+				271B08FE210CC39200C48314 /* infoUpdate.png */,
+			);
+			path = Mobile;
 			sourceTree = "<group>";
 		};
 		337A5FA5FA7798CE351EC20B07789320 /* FirebaseABTesting */ = {

@@ -105,6 +105,10 @@ CheckVersion.checkWithAlert(viewController: self){ result in
 ```
 where `result` is a Bool with value `true` if your version is ok, `false` otherwise.
 
+![alt text](./Screenshots/Mobile/infoUpdate.png)
+![alt text](./Screenshots/Mobile/forceUpdate.png)
+![alt text](./Screenshots/Mobile/error.png)
+
 ### Application Configuration
 
 Is possible to choose some custom library configuration like these:
