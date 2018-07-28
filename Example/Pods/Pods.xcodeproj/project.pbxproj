@@ -248,6 +248,8 @@
 		23564F33E8F29323D88F27DE4027E94E /* FIRLoggerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLoggerLevel.h; path = Firebase/Core/Public/FIRLoggerLevel.h; sourceTree = "<group>"; };
 		268910D33517C77339ABBE3C4558CE07 /* GPBUnknownFieldSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBUnknownFieldSet.h; path = objectivec/GPBUnknownFieldSet.h; sourceTree = "<group>"; };
 		271B08F2210CAF9D00C48314 /* firebaseNewProject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firebaseNewProject.png; sourceTree = "<group>"; };
+		271B08F4210CB21100C48314 /* addIosProject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addIosProject.png; sourceTree = "<group>"; };
+		271B08F5210CB27C00C48314 /* downloadPlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadPlist.png; sourceTree = "<group>"; };
 		27FC14A2210B645600ABFBED /* CVUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVUtility.swift; path = CheckVersion/Classes/CVUtility.swift; sourceTree = "<group>"; };
 		27FC14A4210B652200ABFBED /* CVResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVResult.swift; path = CheckVersion/Classes/CVResult.swift; sourceTree = "<group>"; };
 		27FC14A8210B715500ABFBED /* FirebaseCheckVersion.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirebaseCheckVersion.podspec; sourceTree = "<group>"; };
@@ -537,6 +539,8 @@
 			isa = PBXGroup;
 			children = (
 				271B08F2210CAF9D00C48314 /* firebaseNewProject.png */,
+				271B08F4210CB21100C48314 /* addIosProject.png */,
+				271B08F5210CB27C00C48314 /* downloadPlist.png */,
 			);
 			path = Screenshots;
 			sourceTree = "<group>";

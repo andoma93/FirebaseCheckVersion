@@ -19,12 +19,30 @@ it, simply add the following line to your Podfile:
 pod 'FirebaseCheckVersion'
 ```
 
-## Usage
+## Configuration
 
 First of all you need, if you haven't yet, to create a Firebase Project for your iOS Application.
 Go to [Firebase Console](https://console.firebase.google.com) and create your project:
 
 ![alt text](./Screenshots/firebaseNewProject.png)
+
+Once you created your project you need to link your iOS Application:
+
+![alt text](./Screenshots/addIosProject.png)
+
+Now fill the bundle id with yours, download the GoogleService-Info.plist that Firebase created for your project and drag it into your xCode Project in this way:
+
+![alt text](./Screenshots/downloadPlist.png)
+
+Go now in your AppDelegate.swift file and write ```FirebaseApp.configure()```  how first line of your ```didFinishLaunchingWithOptions:```  method in this way:
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+FirebaseApp.configure()
+// Override point for customization after application launch.
+return true
+}
+```
 
 ## Author
 
