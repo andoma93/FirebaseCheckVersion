@@ -19,6 +19,13 @@ it, simply add the following line to your Podfile:
 pod 'FirebaseCheckVersion'
 ```
 
+## Usage
+
+First of all you need, if you haven't yet, to create a Firebase Project for your iOS Application.
+Go to [Firebase Console](https://console.firebase.google.com) and create your project:
+
+![alt text](./Screenshots/firebaseNewProject.png)
+
 ## Author
 
 andoma93, andoma93@gmail.com
