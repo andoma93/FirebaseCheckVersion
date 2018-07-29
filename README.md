@@ -14,6 +14,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+An iOS Swift project and 10 minutes of your time.
+
 ## Installation
 
 FirebaseCheckVersion is available through [CocoaPods](https://cocoapods.org). To install
