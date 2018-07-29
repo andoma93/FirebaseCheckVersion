@@ -4,6 +4,10 @@
 [![License](https://img.shields.io/cocoapods/l/FirebaseCheckVersion.svg?style=flat)](https://cocoapods.org/pods/FirebaseCheckVersion)
 [![Platform](https://img.shields.io/cocoapods/p/FirebaseCheckVersion.svg?style=flat)](https://cocoapods.org/pods/FirebaseCheckVersion)
 
+## Summary
+
+FirebaseCheckVersion is a simple iOS Library that notifies users when a new version of your app is available. It's configurable through Firebase Remote Configuration. Please read the Configuration section to know more.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
