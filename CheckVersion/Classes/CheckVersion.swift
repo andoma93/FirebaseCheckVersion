@@ -14,6 +14,10 @@ public class CheckVersion{
     private static let keyInfoUpdate = "infoupdate"
     private static let keyVersionOk = "versionok"
     
+    /// Checks the current version
+    ///
+    /// - Parameters:
+    ///   - completion: a callback called at the end of the check: check CVResult enum for result
     public class func check(_ completion: @escaping (CVResult) -> ()){
         let version = CVUtility.getAppVersionForFirebaseRemote()
         let remoteConfig = CheckVersion.remoteConfig()
@@ -43,6 +47,11 @@ public class CheckVersion{
         }
     }
     
+    /// Checks the current version showing an alert if needed
+    ///
+    /// - Parameters:
+    ///   - viewController: the UIViewController that could present the alert
+    ///   - completion: a callback called at the end of the check *versionIsOk* will be true if the current version is ok, false otherwise
     public class func checkWithAlert(viewController: UIViewController, _ completion: @escaping (_ versionIsOk: Bool) -> ()){
         CheckVersion.check{ result in
             prepareAlert(viewController: viewController, result: result, completion: completion)
