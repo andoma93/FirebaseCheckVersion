@@ -795,7 +795,7 @@
 		9BBF07FC6B8AE687F46FB6366B9411CD /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C34B590E436B6B5B13CC2B1E390EA12E /* CheckVersion */,
+				C34B590E436B6B5B13CC2B1E390EA12E /* FirebaseCheckVersion */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -824,7 +824,7 @@
 			name = Defines;
 			sourceTree = "<group>";
 		};
-		C34B590E436B6B5B13CC2B1E390EA12E /* CheckVersion */ = {
+		C34B590E436B6B5B13CC2B1E390EA12E /* FirebaseCheckVersion */ = {
 			isa = PBXGroup;
 			children = (
 				B8024FE1C7FD7A90E5E52486885EB9C5 /* CheckVersion.swift */,
@@ -834,7 +834,7 @@
 				DD5D7E98033BAB7AD7099B04DBE3F7CD /* Pod */,
 				C4D6F39D23A3A62A4A1A6F997A3E8BE5 /* Support Files */,
 			);
-			name = CheckVersion;
+			name = FirebaseCheckVersion;
 			path = ../..;
 			sourceTree = "<group>";
 		};

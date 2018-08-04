@@ -7,14 +7,14 @@
 
 import Foundation
 
-public class CheckVersionConfiguration{
+public class FirebaseCheckVersionConfiguration{
     
-    private static var pDefault : CheckVersionConfiguration?
+    private static var pDefault : FirebaseCheckVersionConfiguration?
     /// This is the default configuration
-    public static var `default` : CheckVersionConfiguration{
+    public static var `default` : FirebaseCheckVersionConfiguration{
         get{
             if pDefault == nil{
-                pDefault = CheckVersionConfiguration()
+                pDefault = FirebaseCheckVersionConfiguration()
             }
             return pDefault!
         }

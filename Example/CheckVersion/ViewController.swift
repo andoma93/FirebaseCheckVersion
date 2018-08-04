@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CheckVersion.checkWithAlert(viewController: self){ result in
+        FirebaseCheckVersion.checkWithAlert(viewController: self){ result in
             //check result and do what you want
         }
         // Do any additional setup after loading the view, typically from a nib.

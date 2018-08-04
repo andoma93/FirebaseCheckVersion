@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseRemoteConfig
 
-public class CheckVersion{
+public class FirebaseCheckVersion{
     
     private static let keyForceUpdate = "forceupdate"
     private static let keyInfoUpdate = "infoupdate"
@@ -20,12 +20,12 @@ public class CheckVersion{
     ///   - completion: a callback called at the end of the check: check CVResult enum for result
     public class func check(_ completion: @escaping (CVResult) -> ()){
         let version = CVUtility.getAppVersionForFirebaseRemote()
-        let remoteConfig = CheckVersion.remoteConfig()
-        remoteConfig.fetch(withExpirationDuration: CheckVersionConfiguration.default.duration){ (status, error) -> Void in
+        let remoteConfig = FirebaseCheckVersion.remoteConfig()
+        remoteConfig.fetch(withExpirationDuration: FirebaseCheckVersionConfiguration.default.duration){ (status, error) -> Void in
             switch status{
             case .success:
                 remoteConfig.activateFetched()
-                let check = remoteConfig.configValue(forKey: "\(CheckVersionConfiguration.default.prependKey)\(version)").stringValue
+                let check = remoteConfig.configValue(forKey: "\(FirebaseCheckVersionConfiguration.default.prependKey)\(version)").stringValue
                 if let check = check?.lowercased(){
                     if check == keyForceUpdate{
                         completion(.forceUpdate)
@@ -53,34 +53,34 @@ public class CheckVersion{
     ///   - viewController: the UIViewController that could present the alert
     ///   - completion: a callback called at the end of the check *versionIsOk* will be true if the current version is ok, false otherwise
     public class func checkWithAlert(viewController: UIViewController, _ completion: @escaping (_ versionIsOk: Bool) -> ()){
-        CheckVersion.check{ result in
+        FirebaseCheckVersion.check{ result in
             prepareAlert(viewController: viewController, result: result, completion: completion)
         }
     }
     
     private class func prepareAlert(viewController: UIViewController, result: CVResult, completion: @escaping (_ versionIsOk: Bool) -> ()){
-        let title = CheckVersionConfiguration.default.labelAlertTitle
-        var message = CheckVersionConfiguration.default.labelAlertError
+        let title = FirebaseCheckVersionConfiguration.default.labelAlertTitle
+        var message = FirebaseCheckVersionConfiguration.default.labelAlertError
         switch result{
         case .forceUpdate:
-            message = CheckVersionConfiguration.default.labelForceUpdate
+            message = FirebaseCheckVersionConfiguration.default.labelForceUpdate
             break
         case .infoUpdate:
-            message = CheckVersionConfiguration.default.labelInfoUpdate
+            message = FirebaseCheckVersionConfiguration.default.labelInfoUpdate
             break
         case .versionUnknown:
-             if CheckVersionConfiguration.default.continueOnVersionUnknown{
-                completion(CheckVersionConfiguration.default.continueOnVersionUnknown)
+             if FirebaseCheckVersionConfiguration.default.continueOnVersionUnknown{
+                completion(FirebaseCheckVersionConfiguration.default.continueOnVersionUnknown)
                 return
              }
-            message = CheckVersionConfiguration.default.labelAlertError
+            message = FirebaseCheckVersionConfiguration.default.labelAlertError
             break
         case .error:
-            if CheckVersionConfiguration.default.continueOnError{
+            if FirebaseCheckVersionConfiguration.default.continueOnError{
                 completion(true)
                 return
             }
-            message = CheckVersionConfiguration.default.labelAlertError
+            message = FirebaseCheckVersionConfiguration.default.labelAlertError
             break
         case .versionOk:
             completion(true)
@@ -91,31 +91,35 @@ public class CheckVersion{
     
     private class func showAlert(title: String, message: String, viewController: UIViewController, result: CVResult, completion: @escaping (_ versionIsOk: Bool) -> ()){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let notNow = UIAlertAction(title: CheckVersionConfiguration.default.labelButtonNotNow,style: .default, handler: { action in
-            completion(true)
+        let notNow = UIAlertAction(title: FirebaseCheckVersionConfiguration.default.labelButtonNotNow,style: .default, handler: { action in
+            //nothing to do here
         })
-        let update = UIAlertAction(title: CheckVersionConfiguration.default.labelButtonUpdate,style: .default, handler: { action in
-            UIApplication.shared.openURL(CheckVersionConfiguration.default.urlStore)
-            completion(false)
+        let update = UIAlertAction(title: FirebaseCheckVersionConfiguration.default.labelButtonUpdate,style: .default, handler: { action in
+            UIApplication.shared.openURL(FirebaseCheckVersionConfiguration.default.urlStore)
         })
+        var completionResult = false
         switch result{
         case .forceUpdate:
             alertController.addAction(update)
+            completionResult = false
             break
         case .infoUpdate:
             alertController.addAction(notNow)
             alertController.addAction(update)
+            completionResult = true
             break
         case .versionUnknown, .error:
-            let okAction = UIAlertAction(title: CheckVersionConfiguration.default.labelButtonOk,style: .default, handler: { action in
-                completion(false)
+            let okAction = UIAlertAction(title: FirebaseCheckVersionConfiguration.default.labelButtonOk,style: .default, handler: { action in
+                //nothing to do here
             })
             alertController.addAction(okAction)
+            completionResult = false
             break
         case .versionOk:
             return
         }
         viewController.present(alertController, animated: true)
+        completion(completionResult)
     }
     
     private class func remoteConfig() -> RemoteConfig {

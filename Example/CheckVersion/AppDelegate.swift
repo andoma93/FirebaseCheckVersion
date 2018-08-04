@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        CheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com")!
-        CheckVersionConfiguration.default.continueOnError = false
-        CheckVersionConfiguration.default.continueOnVersionUnknown = false
-        CheckVersionConfiguration.default.prependKey = "CheckVersion_"
-        CheckVersionConfiguration.default.duration = TimeInterval(10)
+        FirebaseCheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com")!
+        FirebaseCheckVersionConfiguration.default.continueOnError = false
+        FirebaseCheckVersionConfiguration.default.continueOnVersionUnknown = false
+        FirebaseCheckVersionConfiguration.default.prependKey = "CheckVersion_"
+        FirebaseCheckVersionConfiguration.default.duration = TimeInterval(10)
         // Override point for customization after application launch.
         return true
     }
