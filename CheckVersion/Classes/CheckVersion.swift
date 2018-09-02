@@ -23,7 +23,7 @@ public class FirebaseCheckVersion{
         let remoteConfig = FirebaseCheckVersion.remoteConfig()
         remoteConfig.fetch(withExpirationDuration: FirebaseCheckVersionConfiguration.default.duration){ (status, error) -> Void in
             switch status{
-            case .success:
+            case .success, .throttled:
                 remoteConfig.activateFetched()
                 let check = remoteConfig.configValue(forKey: "\(FirebaseCheckVersionConfiguration.default.prependKey)\(version)").stringValue
                 if let check = check?.lowercased(){
