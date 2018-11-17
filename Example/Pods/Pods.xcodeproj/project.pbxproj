@@ -255,7 +255,7 @@
 		271B08FE210CC39200C48314 /* infoUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoUpdate.png; sourceTree = "<group>"; };
 		271B08FF210CC39200C48314 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		271B0900210CC39200C48314 /* forceUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forceUpdate.png; sourceTree = "<group>"; };
-		27952F2E21A07D4E00F89853 /* TypeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCheck.swift; sourceTree = "<group>"; };
+		27952F2E21A07D4E00F89853 /* TypeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TypeCheck.swift; path = CheckVersion/Classes/TypeCheck.swift; sourceTree = "<group>"; };
 		27FC14A2210B645600ABFBED /* CVUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVUtility.swift; path = CheckVersion/Classes/CVUtility.swift; sourceTree = "<group>"; };
 		27FC14A4210B652200ABFBED /* CVResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVResult.swift; path = CheckVersion/Classes/CVResult.swift; sourceTree = "<group>"; };
 		27FC14A8210B715500ABFBED /* FirebaseCheckVersion.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirebaseCheckVersion.podspec; sourceTree = "<group>"; };

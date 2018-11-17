@@ -57,12 +57,13 @@ Done!
 
 ### Add versions to your Firebase
 
-Once you configured all, you need to set the version on your Firebase Project, so navigate to "Remote Config" section into Firebase and add a new property which key is  ```iOSVersion_<yourVersionWithUnderscore>``` where <yourVersionWithUnderscore> is your version number with underscore instead of points:
+Once you configured all, you need to set the version on your Firebase Project, so navigate to "Remote Config" section into Firebase and add a new property which key is  ```iOSVersion_<yourVersionWithUnderscore>``` where <yourVersionWithUnderscore> is your version number or your build number (depending of which method you are going to use) with underscore instead of points:
 Eg.
 ```
 1.0 --> 1_0
 1.1 --> 1_1
 10.03.9 --> 10_03_9
+12 --> 12
 ```
 
 So if your app version is 1.0 simple configure a new Remote Configuration like this:
@@ -84,7 +85,7 @@ In the UIViewController you want to add the check silently you need to insert th
 import CheckVersion
 ...
 
-CheckVersion.check{ result in
+FirebaseCheckVersion.checkVersion{ result in
     //check result and do what you want
 }
 ```
@@ -105,7 +106,7 @@ In the UIViewController you want to add the check with Alert you need to insert 
 import CheckVersion
 ...
 
-CheckVersion.checkWithAlert(viewController: self){ result in
+FirebaseCheckVersion.checkBuildWithAlert(viewController: self){ result in
     //check result and do what you want
 }
 ```
@@ -122,11 +123,11 @@ import CheckVersion
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
-    CheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com/<myAppId>")! //where myAppID is your store application id
-    CheckVersionConfiguration.default.continueOnError = false //continue in case of error (default is true)
-    CheckVersionConfiguration.default.continueOnVersionUnknown = false //continue in case of version unknown (default is true)
-    CheckVersionConfiguration.default.prependKey = "" //the prepend string you can insert in firebase console before (default is 'iOSVersion_')
-    CheckVersionConfiguration.default.duration = TimeInterval(120) //the duration of Firebase Remote Configuration Cache (default is 60 seconds)
+    FirebaseCheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com/<myAppId>")! //where myAppID is your store application id
+    FirebaseCheckVersionConfiguration.default.continueOnError = false //continue in case of error (default is true)
+    FirebaseCheckVersionConfiguration.default.continueOnVersionUnknown = false //continue in case of version unknown (default is true)
+    FirebaseCheckVersionConfiguration.default.prependKey = "" //the prepend string you can insert in firebase console before (default is 'iOSVersion_')
+    FirebaseCheckVersionConfiguration.default.duration = TimeInterval(120) //the duration of Firebase Remote Configuration Cache (default is 60 seconds)
     // Override point for customization after application launch.
     return true
 }
@@ -140,13 +141,13 @@ import CheckVersion
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
-    CheckVersionConfiguration.default.labelAlertError = "Si è verificato un errore generico, per favore riprova più tardi"
-    CheckVersionConfiguration.default.labelButtonNotNow = "Non adesso"
-    CheckVersionConfiguration.default.labelButtonUpdate = "Aggiorna"
-    CheckVersionConfiguration.default.labelForceUpdate = "E' disponibile una nuova versione dell'app: per favore aggiornala adesso"
-    CheckVersionConfiguration.default.labelInfoUpdate = "E' disponibile una nuova versione dell'app: se vuoi aggiornala adesso"
-    CheckVersionConfiguration.default.labelAlertTitle = "Attenzione"
-    CheckVersionConfiguration.default.labelButtonOk = "Ok"
+    FirebaseCheckVersionConfiguration.default.labelAlertError = "Si è verificato un errore generico, per favore riprova più tardi"
+    FirebaseCheckVersionConfiguration.default.labelButtonNotNow = "Non adesso"
+    FirebaseCheckVersionConfiguration.default.labelButtonUpdate = "Aggiorna"
+    FirebaseCheckVersionConfiguration.default.labelForceUpdate = "E' disponibile una nuova versione dell'app: per favore aggiornala adesso"
+    FirebaseCheckVersionConfiguration.default.labelInfoUpdate = "E' disponibile una nuova versione dell'app: se vuoi aggiornala adesso"
+    FirebaseCheckVersionConfiguration.default.labelAlertTitle = "Attenzione"
+    FirebaseCheckVersionConfiguration.default.labelButtonOk = "Ok"
     // Override point for customization after application launch.
     return true
 }
