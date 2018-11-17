@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseRemoteConfig
+import UIKit
 
 public class FirebaseCheckVersion{
     
@@ -167,7 +168,7 @@ public class FirebaseCheckVersion{
     
 }
 
-fileprivate enum TypeCheck{
+public enum TypeCheck{
     case version
     case buildNumber
 }
