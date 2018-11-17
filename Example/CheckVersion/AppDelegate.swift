@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseCheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com")!
         FirebaseCheckVersionConfiguration.default.continueOnError = false
         FirebaseCheckVersionConfiguration.default.continueOnVersionUnknown = false
-        FirebaseCheckVersionConfiguration.default.prependKey = "CheckVersion_"
+        FirebaseCheckVersionConfiguration.default.prependKey = "CheckVersion"
         FirebaseCheckVersionConfiguration.default.duration = TimeInterval(10)
         // Override point for customization after application launch.
         return true

@@ -20,4 +20,9 @@ public class CVUtility{
         return version
     }
     
+    public class func getBuildNumber() -> String{
+        let version = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
+        return version
+    }
+    
 }

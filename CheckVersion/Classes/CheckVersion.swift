@@ -17,15 +17,23 @@ public class FirebaseCheckVersion{
     /// Checks the current version
     ///
     /// - Parameters:
+    ///   - checkType: a TypeCheck between version or build number
     ///   - completion: a callback called at the end of the check: check CVResult enum for result
-    public class func check(_ completion: @escaping (CVResult) -> ()){
-        let version = CVUtility.getAppVersionForFirebaseRemote()
+    private class func check(checkType: TypeCheck, _ completion: @escaping (CVResult) -> ()){
+        var keyCheck = ""
+        switch checkType {
+        case .version:
+            let version = CVUtility.getAppVersionForFirebaseRemote()
+            keyCheck = "\(FirebaseCheckVersionConfiguration.default.prependKey)\(version)"
+        case .buildNumber:
+            keyCheck = FirebaseCheckVersionConfiguration.default.prependKey
+        }
         let remoteConfig = FirebaseCheckVersion.remoteConfig()
         remoteConfig.fetch(withExpirationDuration: FirebaseCheckVersionConfiguration.default.duration){ (status, error) -> Void in
             switch status{
             case .success, .throttled:
                 remoteConfig.activateFetched()
-                let check = remoteConfig.configValue(forKey: "\(FirebaseCheckVersionConfiguration.default.prependKey)\(version)").stringValue
+                let check = remoteConfig.configValue(forKey: keyCheck).stringValue
                 if let check = check?.lowercased(){
                     if check == keyForceUpdate{
                         completion(.forceUpdate)
@@ -47,13 +55,41 @@ public class FirebaseCheckVersion{
         }
     }
     
+    /// Checks the current version by Version Name
+    ///
+    /// - Parameters:
+    ///   - completion: a callback called at the end of the check: check CVResult enum for result
+    public class func checkVersion(_ completion: @escaping (CVResult) -> ()){
+        check(checkType: TypeCheck.version, completion)
+    }
+    
+    /// Checks the current version by Build Number
+    ///
+    /// - Parameters:
+    ///   - completion: a callback called at the end of the check: check CVResult enum for result
+    public class func checkBuild(_ completion: @escaping (CVResult) -> ()){
+        check(checkType: TypeCheck.buildNumber, completion)
+    }
+    
     /// Checks the current version showing an alert if needed
     ///
     /// - Parameters:
     ///   - viewController: the UIViewController that could present the alert
     ///   - completion: a callback called at the end of the check *versionIsOk* will be true if the current version is ok, false otherwise
-    public class func checkWithAlert(viewController: UIViewController, _ completion: @escaping (_ versionIsOk: Bool) -> ()){
-        FirebaseCheckVersion.check{ result in
+    public class func checkVersionWithAlert(viewController: UIViewController, _ completion: @escaping (_ versionIsOk: Bool) -> ()){
+        FirebaseCheckVersion.checkVersion{ result in
+            prepareAlert(viewController: viewController, result: result, completion: completion)
+        }
+    }
+    
+    /// Checks the current version showing an alert if needed
+    ///
+    /// - Parameters:
+    ///   - checkType: a TypeCheck between version or build number
+    ///   - viewController: the UIViewController that could present the alert
+    ///   - completion: a callback called at the end of the check *versionIsOk* will be true if the current version is ok, false otherwise
+    public class func checkBuildWithAlert(viewController: UIViewController, _ completion: @escaping (_ versionIsOk: Bool) -> ()){
+        FirebaseCheckVersion.checkBuild{ result in
             prepareAlert(viewController: viewController, result: result, completion: completion)
         }
     }

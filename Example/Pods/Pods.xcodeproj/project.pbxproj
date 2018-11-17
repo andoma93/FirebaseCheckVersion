@@ -31,6 +31,7 @@
 		25B3BC1ED828FAE9DF65139F488515D2 /* pb_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = 99F02E608AE13F45507862603AA66092 /* pb_decode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E0A3F94BE35A8ED474D26C258BAEC3 /* GPBWireFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F8AC7BF0EE0394DF6C69753ACA3A03 /* GPBWireFormat.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		273902E02DC8C77D148B099F0FAABDC2 /* FIRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC3042190B32401DFE88B69C75A280 /* FIRLogger.m */; };
+		27952F2F21A07D4E00F89853 /* TypeCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27952F2E21A07D4E00F89853 /* TypeCheck.swift */; };
 		27FC14A3210B645600ABFBED /* CVUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC14A2210B645600ABFBED /* CVUtility.swift */; };
 		27FC14A5210B652200ABFBED /* CVResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC14A4210B652200ABFBED /* CVResult.swift */; };
 		2874E95777EC21FD6DA4472D9B0061DF /* GPBArray_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 688465C468439A9FAFA95301F54B73E2 /* GPBArray_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -254,6 +255,7 @@
 		271B08FE210CC39200C48314 /* infoUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoUpdate.png; sourceTree = "<group>"; };
 		271B08FF210CC39200C48314 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		271B0900210CC39200C48314 /* forceUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forceUpdate.png; sourceTree = "<group>"; };
+		27952F2E21A07D4E00F89853 /* TypeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCheck.swift; sourceTree = "<group>"; };
 		27FC14A2210B645600ABFBED /* CVUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVUtility.swift; path = CheckVersion/Classes/CVUtility.swift; sourceTree = "<group>"; };
 		27FC14A4210B652200ABFBED /* CVResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CVResult.swift; path = CheckVersion/Classes/CVResult.swift; sourceTree = "<group>"; };
 		27FC14A8210B715500ABFBED /* FirebaseCheckVersion.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirebaseCheckVersion.podspec; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				55FC3313469CB1ABC7E7C644BAA62D77 /* CheckVersionConfiguration.swift */,
 				27FC14A2210B645600ABFBED /* CVUtility.swift */,
 				27FC14A4210B652200ABFBED /* CVResult.swift */,
+				27952F2E21A07D4E00F89853 /* TypeCheck.swift */,
 				DD5D7E98033BAB7AD7099B04DBE3F7CD /* Pod */,
 				C4D6F39D23A3A62A4A1A6F997A3E8BE5 /* Support Files */,
 			);
@@ -1341,6 +1344,7 @@
 			files = (
 				CBD194F98E6340EC1A3F75EF0EB658E9 /* CheckVersion-dummy.m in Sources */,
 				58875AABAE285F3992D55333F1F3781D /* CheckVersion.swift in Sources */,
+				27952F2F21A07D4E00F89853 /* TypeCheck.swift in Sources */,
 				27FC14A5210B652200ABFBED /* CVResult.swift in Sources */,
 				0009DE3A2B28827B90A1DF39FD818A8D /* CheckVersionConfiguration.swift in Sources */,
 				27FC14A3210B645600ABFBED /* CVUtility.swift in Sources */,
