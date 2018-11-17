@@ -166,3 +166,8 @@ public class FirebaseCheckVersion{
     }
     
 }
+
+fileprivate enum TypeCheck{
+    case version
+    case buildNumber
+}
