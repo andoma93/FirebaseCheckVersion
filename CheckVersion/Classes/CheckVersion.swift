@@ -86,7 +86,6 @@ public class FirebaseCheckVersion{
     /// Checks the current version showing an alert if needed
     ///
     /// - Parameters:
-    ///   - checkType: a TypeCheck between version or build number
     ///   - viewController: the UIViewController that could present the alert
     ///   - completion: a callback called at the end of the check *versionIsOk* will be true if the current version is ok, false otherwise
     public class func checkBuildWithAlert(viewController: UIViewController, _ completion: @escaping (_ versionIsOk: Bool) -> ()){
@@ -132,7 +131,7 @@ public class FirebaseCheckVersion{
             //nothing to do here
         })
         let update = UIAlertAction(title: FirebaseCheckVersionConfiguration.default.labelButtonUpdate,style: .default, handler: { action in
-            UIApplication.shared.openURL(FirebaseCheckVersionConfiguration.default.urlStore)
+            FirebaseCheckVersionConfiguration.default.shared?.openURL(FirebaseCheckVersionConfiguration.default.urlStore)
         })
         var completionResult = false
         switch result{

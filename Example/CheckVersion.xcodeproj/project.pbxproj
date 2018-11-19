@@ -48,7 +48,7 @@
 		73A4955A18569EA5C463B09B /* Pods-CheckVersion_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Example/Pods-CheckVersion_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		97389E822019728B6A806F0D /* Pods-CheckVersion_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Example/Pods-CheckVersion_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B2E44378B079314F9E8064B2 /* Pods-CheckVersion_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckVersion_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheckVersion_Tests/Pods-CheckVersion_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7055CB7E66B765B79307B74 /* FirebaseCheckVersion.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FirebaseCheckVersion.podspec; path = ../FirebaseCheckVersion.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C7055CB7E66B765B79307B74 /* FirebaseCheckVersion.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FirebaseCheckVersion.podspec; path = ../FirebaseCheckVersion.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

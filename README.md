@@ -40,13 +40,14 @@ Now fill the bundle id with yours, download the GoogleService-Info.plist that Fi
 
 ![alt text](https://github.com/andoma93/FirebaseCheckVersion/blob/master/Screenshots/downloadPlist.png)
 
-Go now in your AppDelegate.swift file and write ```FirebaseApp.configure()```  how first line of your ```didFinishLaunchingWithOptions:```  method in this way:
+Go now in your AppDelegate.swift file and write ```FirebaseApp.configure()``` and ```FirebaseCheckVersionConfiguration.default.shared = UIApplication.shared``` how first lines of your ```didFinishLaunchingWithOptions:```  method in this way:
 
 ```swift
 import Firebase
 ...
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
+    FirebaseCheckVersionConfiguration.default.shared = UIApplication.shared
     // Override point for customization after application launch.
     return true
 }

@@ -20,6 +20,8 @@ public class FirebaseCheckVersionConfiguration{
         }
     }
     
+    public var shared : UIApplication?
+    
     /// In case of version unknown will be not show the alert if this boolean is true
     public var continueOnVersionUnknown : Bool = true
     

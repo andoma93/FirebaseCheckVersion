@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        FirebaseCheckVersionConfiguration.default.shared = UIApplication.shared
         FirebaseCheckVersionConfiguration.default.urlStore = URL(string: "itms-apps://itunes.apple.com")!
         FirebaseCheckVersionConfiguration.default.continueOnError = false
         FirebaseCheckVersionConfiguration.default.continueOnVersionUnknown = false
