@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CheckVersion
+import FirebaseCheckVersion
 
 class ViewController: UIViewController {
 

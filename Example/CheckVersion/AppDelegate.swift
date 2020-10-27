@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CheckVersion
+import FirebaseCheckVersion
 import Firebase
 
 @UIApplicationMain

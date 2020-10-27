@@ -1,6 +1,0 @@
-framework module CheckVersion {
-  umbrella header "CheckVersion-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,0 +1,6 @@
+framework module FirebaseCheckVersion {
+  umbrella header "FirebaseCheckVersion-umbrella.h"
+
+  export *
+  module * { export * }
+}

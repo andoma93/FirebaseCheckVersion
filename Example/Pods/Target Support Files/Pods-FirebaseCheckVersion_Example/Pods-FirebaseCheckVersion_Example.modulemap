@@ -1,0 +1,6 @@
+framework module Pods_FirebaseCheckVersion_Example {
+  umbrella header "Pods-FirebaseCheckVersion_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

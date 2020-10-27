@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'CheckVersion_Example' do
-  pod 'CheckVersion', :path => '../'
+target 'FirebaseCheckVersion_Example' do
+  pod 'FirebaseCheckVersion', :path => '../'
   
-  target 'CheckVersion_Tests' do
+  target 'FirebaseCheckVersion_Tests' do
     inherit! :search_paths
 
     

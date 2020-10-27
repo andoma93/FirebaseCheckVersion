@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FirebaseCheckVersion'
-  s.version          = '1.0.9'
+  s.version          = '1.0.10'
   s.summary          = 'Notify users about updates of your application'
   s.swift_version    = '4.2'
 
@@ -27,11 +27,11 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'andoma93' => 'andoma93@gmail.com' }
   s.source           = { :git => 'https://github.com/andoma93/FirebaseCheckVersion.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  # s.social_media_url = 'https://twitter.com/andoma93'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
 
-  s.source_files = 'CheckVersion/Classes/**/*'
+  s.source_files = 'FirebaseCheckVersion/Classes/**/*'
   
   # s.resource_bundles = {
   #   'CheckVersion' => ['CheckVersion/Assets/*.png']

@@ -1,5 +1,5 @@
 import XCTest
-import CheckVersion
+import FirebaseCheckVersion
 
 class Tests: XCTestCase {
     
