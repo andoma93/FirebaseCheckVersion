@@ -11,11 +11,18 @@ let package = Package(
             name: "FirebaseCheckVersion",
             targets: ["FirebaseCheckVersion"]),
     ],
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        .package(name: "Firebase",
+                 url: "https://github.com/firebase/firebase-ios-sdk.git",
+                 .upToNextMajor(from: "10.0.0"))
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "FirebaseCheckVersion"),
+            name: "FirebaseCheckVersion",
+            dependencies: [.product(name: "FirebaseRemoteConfig", package: "Firebase")]),
         .testTarget(
             name: "FirebaseCheckVersionTests",
             dependencies: ["FirebaseCheckVersion"]),
