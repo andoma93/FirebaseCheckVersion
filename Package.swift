@@ -25,7 +25,7 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "FirebaseCheckVersion",
-            dependencies: [.product(name: "FirebaseRemoteConfig", package: "Firebase")]),
+            dependencies: [.product(name: "FirebaseRemoteConfigSwift", package: "Firebase")]),
         .testTarget(
             name: "FirebaseCheckVersionTests",
             dependencies: ["FirebaseCheckVersion"]),
