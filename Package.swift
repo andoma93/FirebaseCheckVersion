@@ -11,6 +11,9 @@ let package = Package(
             name: "FirebaseCheckVersion",
             targets: ["FirebaseCheckVersion"]),
     ],
+    platforms: [
+        .iOS(.v13)
+    ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(name: "Firebase",
