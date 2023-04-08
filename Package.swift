@@ -5,14 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "FirebaseCheckVersion",
+    platforms: [.iOS(.v13), .macOS(.v10_13), .tvOS(.v11), .watchOS(.v7)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "FirebaseCheckVersion",
             targets: ["FirebaseCheckVersion"]),
-    ],
-    platforms: [
-        platforms: [ .iOS(.v13), .macOS(.v11), .tvOS(.v14) ],
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
