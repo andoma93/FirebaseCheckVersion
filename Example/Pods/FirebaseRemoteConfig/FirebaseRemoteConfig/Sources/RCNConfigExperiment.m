@@ -17,7 +17,7 @@
 #import "FirebaseRemoteConfig/Sources/RCNConfigExperiment.h"
 
 #import "FirebaseABTesting/Sources/Private/FirebaseABTestingInternal.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 #import "FirebaseRemoteConfig/Sources/RCNConfigDBManager.h"
 #import "FirebaseRemoteConfig/Sources/RCNConfigDefines.h"
 
@@ -74,7 +74,11 @@ static NSString *const kMethodNameLatestStartTime =
     if (result[@RCNExperimentTableKeyPayload]) {
       [strongSelf->_experimentPayloads removeAllObjects];
       for (NSData *experiment in result[@RCNExperimentTableKeyPayload]) {
-        if (![NSJSONSerialization isValidJSONObject:experiment]) {
+        NSError *error;
+        id experimentPayloadJSON = [NSJSONSerialization JSONObjectWithData:experiment
+                                                                   options:kNilOptions
+                                                                     error:&error];
+        if (!experimentPayloadJSON || error) {
           FIRLogWarning(kFIRLoggerRemoteConfig, @"I-RCN000031",
                         @"Experiment payload could not be parsed as JSON.");
         } else {

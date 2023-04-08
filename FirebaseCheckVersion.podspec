@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'FirebaseCheckVersion'
   s.version          = '1.1.0'
   s.summary          = 'Notify users about updates of your application'
-  s.swift_version    = '4.2'
+  s.swift_version    = '5.8'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -29,9 +29,10 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/andoma93/FirebaseCheckVersion.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/andoma93'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'FirebaseCheckVersion/Classes/**/*'
+  s.source_files = 'Sources/FirebaseCheckVersion/Classes/**/*'
   
   # s.resource_bundles = {
   #   'CheckVersion' => ['CheckVersion/Assets/*.png']

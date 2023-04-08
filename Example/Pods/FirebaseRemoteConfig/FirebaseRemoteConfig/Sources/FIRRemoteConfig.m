@@ -17,7 +17,7 @@
 #import "FirebaseRemoteConfig/Sources/Public/FirebaseRemoteConfig/FIRRemoteConfig.h"
 
 #import "FirebaseABTesting/Sources/Private/FirebaseABTestingInternal.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 #import "FirebaseRemoteConfig/Sources/FIRRemoteConfigComponent.h"
 #import "FirebaseRemoteConfig/Sources/Private/FIRRemoteConfig_Private.h"
 #import "FirebaseRemoteConfig/Sources/Private/RCNConfigFetch.h"
@@ -26,18 +26,28 @@
 #import "FirebaseRemoteConfig/Sources/RCNConfigContent.h"
 #import "FirebaseRemoteConfig/Sources/RCNConfigDBManager.h"
 #import "FirebaseRemoteConfig/Sources/RCNConfigExperiment.h"
+#import "FirebaseRemoteConfig/Sources/RCNConfigRealtime.h"
 #import "FirebaseRemoteConfig/Sources/RCNConfigValue_Internal.h"
 #import "FirebaseRemoteConfig/Sources/RCNDevice.h"
+#import "FirebaseRemoteConfig/Sources/RCNPersonalization.h"
 
 /// Remote Config Error Domain.
 /// TODO: Rename according to obj-c style for constants.
 NSString *const FIRRemoteConfigErrorDomain = @"com.google.remoteconfig.ErrorDomain";
+// Remote Config Realtime Error Domain
+NSString *const FIRRemoteConfigUpdateErrorDomain = @"com.google.remoteconfig.update.ErrorDomain";
 /// Remote Config Error Info End Time Seconds;
 NSString *const FIRRemoteConfigThrottledEndTimeInSecondsKey = @"error_throttled_end_time_seconds";
 /// Minimum required time interval between fetch requests made to the backend.
 static NSString *const kRemoteConfigMinimumFetchIntervalKey = @"_rcn_minimum_fetch_interval";
 /// Timeout value for waiting on a fetch response.
 static NSString *const kRemoteConfigFetchTimeoutKey = @"_rcn_fetch_timeout";
+/// Notification when config is successfully activated
+const NSNotificationName FIRRemoteConfigActivateNotification =
+    @"FIRRemoteConfigActivateNotification";
+
+/// Listener for the get methods.
+typedef void (^FIRRemoteConfigListener)(NSString *_Nonnull, NSDictionary *_Nonnull);
 
 @implementation FIRRemoteConfigSettings
 
@@ -59,8 +69,10 @@ static NSString *const kRemoteConfigFetchTimeoutKey = @"_rcn_fetch_timeout";
   RCNConfigSettings *_settings;
   RCNConfigFetch *_configFetch;
   RCNConfigExperiment *_configExperiment;
+  RCNConfigRealtime *_configRealtime;
   dispatch_queue_t _queue;
   NSString *_appName;
+  NSMutableArray *_listeners;
 }
 
 static NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, FIRRemoteConfig *> *>
@@ -73,10 +85,12 @@ static NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, FIRRemote
 
 + (nonnull FIRRemoteConfig *)remoteConfigWithFIRNamespace:(NSString *_Nonnull)firebaseNamespace {
   if (![FIRApp isDefaultAppConfigured]) {
-    FIRLogError(kFIRLoggerRemoteConfig, @"I-RCN000047",
-                @"FIRApp not configured. Please make sure you have called [FIRApp configure]");
-    // TODO: Maybe throw an exception here? That'd be a breaking change though, but at this point
-    // RC can't work as expected.
+    [NSException raise:@"FIRAppNotConfigured"
+                format:@"The default `FirebaseApp` instance must be configured before the "
+                       @"default Remote Config instance can be initialized. One way to ensure this "
+                       @"is to call `FirebaseApp.configure()` in the App Delegate's "
+                       @"`application(_:didFinishLaunchingWithOptions:)` or the `@main` struct's "
+                       @"initializer in SwiftUI."];
   }
 
   return [FIRRemoteConfig remoteConfigWithFIRNamespace:firebaseNamespace app:[FIRApp defaultApp]];
@@ -94,10 +108,12 @@ static NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, FIRRemote
 + (FIRRemoteConfig *)remoteConfig {
   // If the default app is not configured at this point, warn the developer.
   if (![FIRApp isDefaultAppConfigured]) {
-    FIRLogError(kFIRLoggerRemoteConfig, @"I-RCN000047",
-                @"FIRApp not configured. Please make sure you have called [FIRApp configure]");
-    // TODO: Maybe throw an exception here? That'd be a breaking change though, but at this point
-    // RC can't work as expected.
+    [NSException raise:@"FIRAppNotConfigured"
+                format:@"The default `FirebaseApp` instance must be configured before the "
+                       @"default Remote Config instance can be initialized. One way to ensure this "
+                       @"is to call `FirebaseApp.configure()` in the App Delegate's "
+                       @"`application(_:didFinishLaunchingWithOptions:)` or the `@main` struct's "
+                       @"initializer in SwiftUI."];
   }
 
   return [FIRRemoteConfig remoteConfigWithFIRNamespace:FIRNamespaceGoogleMobilePlatform
@@ -153,7 +169,21 @@ static NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, FIRRemote
                                                  namespace:_FIRNamespace
                                                    options:options];
 
+    _configRealtime = [[RCNConfigRealtime alloc] init:_configFetch
+                                             settings:_settings
+                                            namespace:_FIRNamespace
+                                              options:options];
+
     [_settings loadConfigFromMetadataTable];
+
+    if (analytics) {
+      _listeners = [[NSMutableArray alloc] init];
+      RCNPersonalization *personalization =
+          [[RCNPersonalization alloc] initWithAnalytics:analytics];
+      [self addListener:^(NSString *key, NSDictionary *config) {
+        [personalization logArmActive:key config:config];
+      }];
+    }
   }
   return self;
 }
@@ -183,6 +213,24 @@ static NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, FIRRemote
     }
     completionHandler(error);
   });
+}
+
+/// Adds a listener that will be called whenever one of the get methods is called.
+/// @param listener Function that takes in the parameter key and the config.
+- (void)addListener:(nonnull FIRRemoteConfigListener)listener {
+  @synchronized(_listeners) {
+    [_listeners addObject:listener];
+  }
+}
+
+- (void)callListeners:(NSString *)key config:(NSDictionary *)config {
+  @synchronized(_listeners) {
+    for (FIRRemoteConfigListener listener in _listeners) {
+      dispatch_async(_queue, ^{
+        listener(key, config);
+      });
+    }
+  }
 }
 
 #pragma mark - fetch
@@ -241,7 +289,7 @@ static NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, FIRRemote
   [self fetchWithCompletionHandler:fetchCompletion];
 }
 
-#pragma mark - apply
+#pragma mark - activate
 
 typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_Nullable error);
 
@@ -278,16 +326,45 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
                                           toSource:RCNDBSourceActive
                                       forNamespace:self->_FIRNamespace];
     strongSelf->_settings.lastApplyTimeInterval = [[NSDate date] timeIntervalSince1970];
+    // New config has been activated at this point
     FIRLogDebug(kFIRLoggerRemoteConfig, @"I-RCN000069", @"Config activated.");
-    [strongSelf->_configExperiment updateExperimentsWithHandler:^(NSError *_Nullable error) {
+    [strongSelf->_configContent activatePersonalization];
+    // Update experiments only for 3p namespace
+    NSString *namespace = [strongSelf->_FIRNamespace
+        substringToIndex:[strongSelf->_FIRNamespace rangeOfString:@":"].location];
+    if ([namespace isEqualToString:FIRNamespaceGoogleMobilePlatform]) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self notifyConfigHasActivated];
+      });
+      [strongSelf->_configExperiment updateExperimentsWithHandler:^(NSError *_Nullable error) {
+        if (completion) {
+          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            completion(YES, nil);
+          });
+        }
+      }];
+    } else {
       if (completion) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
           completion(YES, nil);
         });
       }
-    }];
+    }
   };
   dispatch_async(_queue, applyBlock);
+}
+
+- (void)notifyConfigHasActivated {
+  // Need a valid google app name.
+  if (!_appName) {
+    return;
+  }
+  // The Remote Config Swift SDK will be listening for this notification so it can tell SwiftUI to
+  // update the UI.
+  NSDictionary *appInfoDict = @{kFIRAppNameKey : _appName};
+  [[NSNotificationCenter defaultCenter] postNotificationName:FIRRemoteConfigActivateNotification
+                                                      object:self
+                                                    userInfo:appInfoDict];
 }
 
 #pragma mark - helpers
@@ -321,6 +398,8 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
                     @"Key %@ should come from source:%zd instead coming from source: %zd.", key,
                     (long)FIRRemoteConfigSourceRemote, (long)value.source);
       }
+      [self callListeners:key
+                   config:[self->_configContent getConfigAndMetadataForNamespace:FQNamespace]];
       return;
     }
     value = self->_configContent.defaultConfig[FQNamespace][key];
@@ -525,6 +604,13 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
                 configSettings.minimumFetchInterval, configSettings.fetchTimeout);
   };
   dispatch_async(_queue, setConfigSettingsBlock);
+}
+
+#pragma mark - Realtime
+
+- (FIRConfigUpdateListenerRegistration *)addOnConfigUpdateListener:
+    (void (^_Nonnull)(FIRRemoteConfigUpdate *update, NSError *_Nullable error))listener {
+  return [self->_configRealtime addConfigUpdateListener:listener];
 }
 
 @end
